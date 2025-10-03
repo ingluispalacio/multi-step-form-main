@@ -1,12 +1,8 @@
 import { useStep } from "../../context/StepContext";
 
-const arraySteps = [{ title: 'Your info', number: 1 },
-{ title: 'Select Plan', number: 2 },
-{ title: 'Add-Ons', number: 3 },
-{ title: 'summary', number: 4 }]
 
 function SidebarStep() {
-    const { step } = useStep();
+    const { step, arraySteps } = useStep();
     return (
         <div className="bg-[url(/assets/images/bg-sidebar-mobile.svg)]  w-full h-40 
      lg:bg-[url(/assets/images/bg-sidebar-desktop.svg)] lg:w-50 xl:60 lg:h-full lg:rounded-lg  bg-no-repeat 
@@ -15,13 +11,18 @@ function SidebarStep() {
                 {
                     arraySteps.map((element) => {
                         return (
-                            <div className="flex gap-3">
+                            <div
+                             key={`step-${element.number}`}
+                             className="flex gap-3 justinfy-center">
                                 <button
                                     key={`btn-step-${element.number}`}
-                                    className={`btn-step ${element.number === step && 'active'}`}>
+                                    className={`btn-step ${element.number === step || (step > arraySteps.length && element.number === arraySteps.length)
+                                            ? 'active'
+                                            : ''
+                                        }`}>
                                     {element.number}
                                 </button>
-                                <div className="hidden text-xs lg:flex flex-col uppercase">
+                                <div className="hidden text-xs lg:flex flex-col uppercase ">
                                     <label className="!text-[#BFE0FF]">STEP {element.number}</label>
                                     <label className="!text-white font-bold">{element.title}</label>
                                 </div>
