@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("./assets/fonts/Ubuntu-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("./assets/fonts/Ubuntu-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("./assets/fonts/Ubuntu-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@theme {
+  --breakpoint-xs: 20rem;
+  --breakpoint-ss: 23.4375rem;
+  --breakpoint-ms: 26.5625rem;
+  --breakpoint-2xl: 100rem;
+  --breakpoint-3xl: 120rem;
+  --font-primary: "Ubuntu", sans-serif; 
+  --color-primary: #0c2a56;
+  --color-secondary: #BFE0FF;
+  --color-active: #514C97;
+  --bg-color-default: #ebf2fc;
+}
+
+body{
+  background-color: var(--bg-color-default);
+  font-family: var(--font-primary);
+}
+
+h1,h2,h3,h4, label{
+  color: var(--color-primary);
+}
+
+button{
+  background-color: var(--color-primary);
+}
+
+
+.btn-step {
+  @apply px-3 py-1 rounded-full font-bold cursor-pointer border transition-colors duration-300;
+  color: var(--color-secondary);
+  background-color: transparent;
+  border-color: var(--color-secondary);
+}
+
+.btn-step.active {
+  color: var(--color-primary);
+  background-color: var(--color-secondary);
+}
